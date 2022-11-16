@@ -1,0 +1,3 @@
+/home/hjp/CLionProjects/cg5-3/cmake-build-debug-/CMakeFiles/cg5_3.dir
+/home/hjp/CLionProjects/cg5-3/cmake-build-debug-/CMakeFiles/edit_cache.dir
+/home/hjp/CLionProjects/cg5-3/cmake-build-debug-/CMakeFiles/rebuild_cache.dir

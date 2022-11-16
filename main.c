@@ -1,41 +1,59 @@
 #include <stdio.h>
-
 int main()
 {
-    int a[10001];
-    int b[10001];
-    int c[101];
-    //int n; scanf("%d",&n);
-    int i,j;
-    for( i=1;i<=n;i++) scanf("%d",&a[i]);
-    //int m;scanf("%d",&m);
-    for( i=1;i<=m;i++) scanf("%d",&b[i]);
-    int cnt=0;
-
-    for(i=1;i<=n;i++){
-        for(j=1;j<=m;j++){
-            if(a[i]==b[j]) { // 有相同的记录
-                cnt++;
-                c[cnt]=a[i];
-                break;
-            }
-        }
-    }
-    int t;
-
-    for(i=1;i<=cnt-1;i++)   //非优化的冒泡排序
+    int a[2][20], o[20];
+    int n[2];
+    for (int i = 0;; i++)
     {
-        for(j=1;j<=cnt-1;j++)
+        scanf("%d", &a[0][i]);
+        if (a[0][i] == -1)
         {
-            if(c[j]<c[j+1])
-            {
-                t=c[j+1];
-                c[j+1]=c[j];
-                c[j]=t;
+            n[0] = i;
+            break;
+        }
+    }
+    for (int i = 0;; i++)
+    {
+        scanf("%d", &a[1][i]);
+        if (a[1][i] == -1)
+        {
+            n[1] = i;
+            break;
+        }
+    }
+
+    /*
+    for(int i = 0;i < 40;i++)a[0][i]=-1;
+    for(int i=0,j=0;i<2;)
+    {
+        scanf("%d",&a[i][j]);
+        if(a[i][j]!=-1)j++;
+        else i++;
+    }
+     */
+    int count = 0;
+    for (int i = 0; i < n[0]; i++) {  //取交集并记录
+        for (int j = 0; j < n[1]; j++) {
+            if (a[0][i] == a[1][j]) {
+                o[count] = a[0][i];
+                count++;              //记录得count个元素
             }
         }
     }
 
-    for(i=1;i<=cnt;i++) printf("%d ",c[i]);  //输出
+    for (int i = 0; i < count; i++)         //冒泡排序
+        for (int j = 0; j < count - i; j++)
+        {
+            if (o[j] > o[j + 1])
+            {
+                int t;
+                t = o[j];
+                o[j] = o[j + 1];
+                o[j + 1] = t;
+            }
+        }
+    for(int i = 0;i < count;i++){
+        printf("%d ",o[i]);
+    }
     return 0;
 }
